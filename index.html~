@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <title>I'm a Page</title>
+</head>
+
+<body>
+    <center><canvas height ="500" width="500" id="slate"></canvas></center>
+    <center><p><button id="clear">Clear Me</button></p></center>
+</body>
+
+<style>
+    #slate{
+        border: 2px solid black;
+        background-color: #CECEF6;
+        cursor: pointer;
+    }
+
+    #clear{
+        background-color: #8181F7;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+
+    //----declare variables----
+    //clear button
+    var b = document.getElementById("clear");
+
+    //canvas
+    var c = document.getElementById("slate");
+    var content = c.getContext("2d");
+    content.fillStyle = "#8181F7";
+
+    //----clear function----
+    var clear = function(event){
+        content.clearRect(0,0,c.width,c.height);
+    }
+
+    //----draw the rectangles----
+    var drawRect = function(event){
+        var x = event.offsetX;
+        var y = event.offsetY;
+
+        var width = (Math.random() * 25) + 25;
+        var height = (Math.random() * 25) + 25;
+
+        content.fillRect(x,y,x+width,y-height);
+
+    }
+
+    //----assign event listeners----
+    b.addEventListener('click',clear);
+    c.addEventListener('click',drawRect);
+
+</script>
+
+</html>
